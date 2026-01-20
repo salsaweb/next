@@ -28,7 +28,7 @@ export default function Login() {
       } else {
         router.push('/app')
       }
-    } catch (error) {
+    } catch (_error) {
       setMessage('An unexpected error occurred')
     } finally {
       setLoading(false)
@@ -51,7 +51,7 @@ export default function Login() {
       } else {
         setMessage('Check your email for the confirmation link!')
       }
-    } catch (error) {
+    } catch (_error) {
       setMessage('An unexpected error occurred')
     } finally {
       setLoading(false)

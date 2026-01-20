@@ -44,8 +44,8 @@ export default function TracksPage() {
       if (!response.ok) throw new Error('Failed to fetch tracks')
       const data = await response.json()
       setTracks(data)
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'An error occurred')
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : 'An error occurred')
     } finally {
       setLoading(false)
     }
@@ -62,8 +62,8 @@ export default function TracksPage() {
       if (!response.ok) throw new Error('Failed to delete track')
 
       setTracks(tracks.filter(track => track.id !== id))
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to delete track')
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : 'Failed to delete track')
     }
   }
 
@@ -91,16 +91,11 @@ export default function TracksPage() {
       } else {
         setImportMessage(data.error || 'Failed to import track')
       }
-    } catch (err) {
+    } catch (_err) {
       setImportMessage('An error occurred while importing')
     } finally {
       setImporting(false)
     }
-  }
-
-  const formatDuration = (duration: string) => {
-    // Assuming duration is in format "MM:SS" or similar
-    return duration
   }
 
   if (loading) {
