@@ -76,7 +76,7 @@ class SpotifyAPI {
     const data = await response.json()
     this.accessToken = data.access_token
     this.tokenExpiry = Date.now() + (data.expires_in * 1000) - 60000 // Refresh 1 minute early
-    return this.accessToken
+    return data.access_token
   }
 
   async searchTracks(query: string, limit: number = 20): Promise<SpotifyTrack[]> {
